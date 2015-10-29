@@ -196,12 +196,14 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>4.0.3.RELEASE</version>
-            <scope>test</scope>
-        </dependency>
+        <!-- FIXME felipecao CONFLITO DE DEPENDENCIA que
+        causa o java.lang.ClassNotFoundException: org.springframework.context.ApplicationContext -->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-context</artifactId>-->
+            <!--<version>4.0.3.RELEASE</version>-->
+            <!--<scope>test</scope>-->
+        <!--</dependency>-->
 
     </dependencies>
 </project>
