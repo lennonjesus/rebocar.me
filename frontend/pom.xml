@@ -10,10 +10,4 @@
     <name>rebocar.me :: frontend</name>
     <url>http://maven.apache.org</url>
     
-    <parent>
-        <groupId>com.github.lennonjesus</groupId>
-        <artifactId>rebocarme</artifactId>
-        <version>0.1-SNAPSHOT</version>
-    </parent>
-
 </project>
