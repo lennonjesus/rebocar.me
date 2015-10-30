@@ -1,8 +1,8 @@
 package com.github.lennonjesus.rebocar.me
 
-import com.github.lennonjesus.rebocar.me.entity.Customer
-import com.github.lennonjesus.rebocar.me.repository.CustomerRepository
-import com.github.lennonjesus.rebocar.me.repository.RestaurantRepositoryImpl
+import com.github.lennonjesus.rebocar.me.entity.tutorial.Customer
+import com.github.lennonjesus.rebocar.me.repository.tutorial.CustomerRepository
+import com.github.lennonjesus.rebocar.me.setup.Bootstrap
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.SpringApplication
@@ -10,6 +10,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 
 @SpringBootApplication
 class RebocarMe implements CommandLineRunner {
+
+    @Autowired
+    Bootstrap bootstrap
 
     @Autowired
     CustomerRepository customerRepository
@@ -20,11 +23,8 @@ class RebocarMe implements CommandLineRunner {
 
     @Override
     void run(String... strings) throws Exception {
-        customerRepository.deleteAll()
 
-        customerRepository.save(new Customer(firstName: "Felipe", lastName: "Carvalho"))
-        customerRepository.save(new Customer(firstName: "Rodrigo", lastName: "Carvalho"))
-        customerRepository.save(new Customer(firstName: "Gisele", lastName: "Paiva"))
+        bootstrap.run()
 
         // fetch all customers
         System.out.println("Customers found with findAll():");

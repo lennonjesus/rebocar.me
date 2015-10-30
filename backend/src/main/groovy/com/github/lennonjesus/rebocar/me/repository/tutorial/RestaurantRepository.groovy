@@ -1,4 +1,4 @@
-package com.github.lennonjesus.rebocar.me.repository
+package com.github.lennonjesus.rebocar.me.repository.tutorial
 
 /**
  * Created by felipe on 10/29/15.

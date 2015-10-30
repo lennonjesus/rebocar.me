@@ -1,4 +1,4 @@
-package com.github.lennonjesus.rebocar.me.repository
+package com.github.lennonjesus.rebocar.me.repository.tutorial
 
 import com.mongodb.MongoClient
 import com.mongodb.client.FindIterable

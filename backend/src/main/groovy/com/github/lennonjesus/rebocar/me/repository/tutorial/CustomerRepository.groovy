@@ -1,6 +1,6 @@
-package com.github.lennonjesus.rebocar.me.repository
+package com.github.lennonjesus.rebocar.me.repository.tutorial
 
-import com.github.lennonjesus.rebocar.me.entity.Customer
+import com.github.lennonjesus.rebocar.me.entity.tutorial.Customer
 import org.springframework.data.mongodb.repository.MongoRepository
 
 /**

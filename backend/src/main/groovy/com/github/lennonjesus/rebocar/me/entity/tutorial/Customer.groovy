@@ -1,4 +1,4 @@
-package com.github.lennonjesus.rebocar.me.entity
+package com.github.lennonjesus.rebocar.me.entity.tutorial
 
 import org.springframework.data.annotation.Id
 
