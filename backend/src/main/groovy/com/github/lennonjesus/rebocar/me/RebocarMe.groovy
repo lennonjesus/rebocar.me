@@ -24,25 +24,27 @@ class RebocarMe implements CommandLineRunner {
     @Override
     void run(String... strings) throws Exception {
 
-        bootstrap.run()
+        if(strings.find { it == "bootstrap" }){
+            bootstrap.run()
 
-        // fetch all customers
-        System.out.println("Customers found with findAll():");
-        System.out.println("-------------------------------");
-        for (Customer customer : customerRepository.findAll()) {
-            System.out.println(customer);
-        }
-        System.out.println();
+            // fetch all customers
+            System.out.println("Customers found with findAll():");
+            System.out.println("-------------------------------");
+            for (Customer customer : customerRepository.findAll()) {
+                System.out.println(customer);
+            }
+            System.out.println();
 
-        // fetch an individual customer
-        System.out.println("Customer found with findByFirstName('Felipe'):");
-        System.out.println("--------------------------------");
-        System.out.println(customerRepository.findByFirstName("Felipe"));
+            // fetch an individual customer
+            System.out.println("Customer found with findByFirstName('Felipe'):");
+            System.out.println("--------------------------------");
+            System.out.println(customerRepository.findByFirstName("Felipe"));
 
-        System.out.println("Customers found with findByLastName('Carvalho'):");
-        System.out.println("--------------------------------");
-        for (Customer customer : customerRepository.findByLastName("Carvalho")) {
-            System.out.println(customer);
+            System.out.println("Customers found with findByLastName('Carvalho'):");
+            System.out.println("--------------------------------");
+            for (Customer customer : customerRepository.findByLastName("Carvalho")) {
+                System.out.println(customer);
+            }
         }
     }
 }
