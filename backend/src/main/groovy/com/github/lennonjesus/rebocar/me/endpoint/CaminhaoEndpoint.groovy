@@ -31,15 +31,17 @@ class CaminhaoEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll(@Context UriInfo query){
 
-        Integer raio = DEFAULT_RADIUS_IN_KM
-
-        if(query.queryParameters."$RAIO"){
-            raio = Integer.valueOf(query.queryParameters.getFirst(RAIO))
-        }
-
+        Integer raio = getRaio(query)
         List<Caminhao> caminhoes = caminhaoRepository.findAllByPosicaoNear(new Point(-22.9810913,-43.2169033), new Distance(raio, Metrics.KILOMETERS))
 
         Response.ResponseBuilder builder = Response.ok(JSONMarshaller.marshall(caminhoes));
         return builder.build();
+    }
+
+    private Integer getRaio(UriInfo query){
+        if(query.queryParameters."$RAIO"){
+            return Integer.valueOf(query.queryParameters.getFirst(RAIO))
+        }
+        return DEFAULT_RADIUS_IN_KM
     }
 }
