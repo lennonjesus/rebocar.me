@@ -33,7 +33,7 @@ class CaminhaoEndpoint {
 
         Integer raio = DEFAULT_RADIUS_IN_KM
 
-        if(query.queryParameters.containsKey(RAIO)){
+        if(query.queryParameters."$RAIO"){
             raio = Integer.valueOf(query.queryParameters.getFirst(RAIO))
         }
 
