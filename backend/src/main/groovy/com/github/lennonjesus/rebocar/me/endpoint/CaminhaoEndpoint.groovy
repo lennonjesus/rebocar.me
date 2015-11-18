@@ -52,7 +52,7 @@ class CaminhaoEndpoint {
     }
 
     private Map<String, Double> extractCurrentPosition(UriInfo query){
-        return [lat: query.queryParameters.getFirst(LATITUDE), lng: query.queryParameters.getFirst(LONGITUDE)]
+        return [lat: query.queryParameters.getFirst(LATITUDE)?.toDouble(), lng: query.queryParameters.getFirst(LONGITUDE)?.toDouble()]
     }
 
     private Integer extractRaio(UriInfo query){
