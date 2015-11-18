@@ -17,4 +17,4 @@ Feature: Buscar reboque mais proximo
     And há um reboque com a placa "Casa do Alemao - Jd Primavera" na localização (-22.6949728,-43.2898208)
     And há um reboque com a placa "Praia do Leblon" na localização (-22.9878367,-43.2235188)
     When eu busco pelo reboque mais próximo
-    Then a busca retorna o reboque com a placa "Praia do Leblon"
+    Then a busca retorna 1 reboque com a placa "Praia do Leblon"

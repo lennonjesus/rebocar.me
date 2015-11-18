@@ -23,6 +23,9 @@ class CaminhaoEndpoint {
 
     private final Integer DEFAULT_RADIUS_IN_KM = 5
     private final String RAIO = "raio"
+    private final String LATITUDE = "lat"
+    private final String LONGITUDE = "lng"
+    private final String COLLECTION_NAME = "caminhoes"
 
     @Autowired
     CaminhaoRepository caminhaoRepository
@@ -30,15 +33,29 @@ class CaminhaoEndpoint {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll(@Context UriInfo query){
+        Map<String, Double> currentPosition = extractCurrentPosition(query)
 
-        Integer raio = getRaio(query)
-        List<Caminhao> caminhoes = caminhaoRepository.findAllByPosicaoNear(new Point(-22.9810913,-43.2169033), new Distance(raio, Metrics.KILOMETERS))
+        if(!currentPosition || !currentPosition.lat || !currentPosition.lng){
+            return Response.status(422)
+                    .entity(JSONMarshaller.marshallErrorMessage("Parameters 'lat' and 'lng' are required when executing a search."))
+                    .build()
+        }
 
-        Response.ResponseBuilder builder = Response.ok(JSONMarshaller.marshall(caminhoes));
+        Integer raio = extractRaio(query)
+        List<Caminhao> caminhoes = caminhaoRepository.findAllByPosicaoNear(
+                new Point(currentPosition.lat, currentPosition.lng),
+                new Distance(raio, Metrics.KILOMETERS)
+        )
+
+        Response.ResponseBuilder builder = Response.ok(JSONMarshaller.marshall(COLLECTION_NAME, caminhoes));
         return builder.build();
     }
 
-    private Integer getRaio(UriInfo query){
+    private Map<String, Double> extractCurrentPosition(UriInfo query){
+        return [lat: query.queryParameters.getFirst(LATITUDE), lng: query.queryParameters.getFirst(LONGITUDE)]
+    }
+
+    private Integer extractRaio(UriInfo query){
         if(query.queryParameters."$RAIO"){
             return Integer.valueOf(query.queryParameters.getFirst(RAIO))
         }
