@@ -24,4 +24,8 @@ Feature: Cadastrar rebocados
     When eu executo o cadastro
     Then o cadastro emite um erro
 
-#  Scenario: Campo nao informado
+  # Scenario: criando sem atributo obrigatorio
+  # Scenario: edicao (login nao pode ser editavel)
+  # Scenario: delecao
+  # Scenario: findById
+  # Scenario: findAll
