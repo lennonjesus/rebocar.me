@@ -32,6 +32,17 @@ class JSONMarshaller {
         return sw.toString()
     }
 
+    public static <S extends SelfMarshallingEntity> String marshall(S instance) throws IOException {
+        StringWriter sw = new StringWriter()
+        JsonFactory f = new JsonFactory()
+        JsonGenerator g = f.createJsonGenerator(sw)
+
+        instance.asJson(g)
+        g.close()
+
+        return sw.toString()
+    }
+
     public static marshallErrorMessage(String errorMessage){
         StringWriter sw = new StringWriter()
         JsonFactory f = new JsonFactory()

@@ -1,6 +1,7 @@
 package com.github.lennonjesus.rebocar.me.endpoint
 
 import com.github.lennonjesus.rebocar.me.entity.Caminhao
+import com.github.lennonjesus.rebocar.me.entity.Rebocado
 import com.github.lennonjesus.rebocar.me.marshall.JSONMarshaller
 import com.github.lennonjesus.rebocar.me.repository.CaminhaoRepository
 import org.springframework.beans.factory.annotation.Autowired

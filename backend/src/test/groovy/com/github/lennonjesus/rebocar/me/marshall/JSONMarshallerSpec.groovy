@@ -1,6 +1,7 @@
 package com.github.lennonjesus.rebocar.me.marshall
 
 import com.github.lennonjesus.rebocar.me.entity.Caminhao
+import com.github.lennonjesus.rebocar.me.entity.Rebocado
 import org.springframework.data.geo.Point
 import spock.lang.Specification
 
@@ -50,5 +51,13 @@ class JSONMarshallerSpec extends Specification {
 
         then:
         '{"error":""}' == json
+    }
+
+    def "marshall returns the JSON representation of the instance"() {
+        when:
+        def json = JSONMarshaller.marshall(new Rebocado(login: "felipe", nome: "Felipe", email: "felipe@rebocar.me", celular: "992130056", endereco: "Rua das Laranjeiras", cep: "22270243"))
+
+        then:
+        '{"login":"felipe","nome":"Felipe","email":"felipe@rebocar.me","celular":"992130056","endereco":"Rua das Laranjeiras","cep":"22270243"}' == json
     }
 }

@@ -14,6 +14,12 @@ class ResponseParser {
 
     ResponseParser(Response response) {
         status = response.status
-        attrs = new Gson().fromJson(response.entity, Map.class)
+
+        if(response.entity){
+            attrs = new Gson().fromJson(response.entity, Map.class)
+        }
+        else {
+            attrs = [:]
+        }
     }
 }

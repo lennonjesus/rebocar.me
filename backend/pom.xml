@@ -128,6 +128,19 @@
             <version>3.3.2</version>
         </dependency>
 
+        <!-- adds org.codehaus.jettison.json.JSONObject to classpath -->
+        <dependency>
+            <groupId>org.codehaus.jettison</groupId>
+            <artifactId>jettison</artifactId>
+            <version>1.3.7</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>stax</groupId>
+                    <artifactId>stax-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
         <!-- spring boot -->
 
         <dependency>
